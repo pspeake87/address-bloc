@@ -14,7 +14,8 @@ require_relative "../models/address_book"
     puts "2 - Create an entry"
     puts "3 - Search for an entry"
     puts "4 - Import entries from a CSV"
-    puts "5 - Exit"
+    puts "5 - detonate"
+    puts "6 - Exit"
     print "Enter your selection: "
 
     selection = gets.to_i
@@ -37,7 +38,11 @@ require_relative "../models/address_book"
        system "clear"
        read_csv
        main_menu
-     when 5
+     when 5 
+       system "clear"
+       detonate
+       main_menu
+     when 6
        puts "Good-bye!"
        exit(0)
      else
@@ -207,5 +212,23 @@ require_relative "../models/address_book"
        search_submenu(entry)
      end
    end
+
+   def detonate
+
+      @address_book.entries.length
+     index = @address_book.entries.length - 1
+     while index > -1 do
+        
+        puts @address_book.entries.length
+        @address_book.entries.delete_at(index)
+        index -= 1
+
+
+      end
+      
+      puts "Entries have been detonated!"
+      
+   end
+
 
  end
